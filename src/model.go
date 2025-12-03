@@ -115,9 +115,9 @@ func (m ParticleRenderer) View() string {
 			} else if count == 3 {
 				char = MEDIUM_HIGH_PARTICLES
 			} else if count == 2 {
-				char = MEDIUM_PARTICLES
-			} else if count == 1 {
 				char = LOW_PARTICLES
+			} else if count == 1 {
+				char = SPARSE_PARTICLES
 			} else {
 				char = " "
 			}
