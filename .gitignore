@@ -1,0 +1,27 @@
+# Binaries for programs and plugins
+particle_effect
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+# Test binary, built with `go test -c`
+*.test
+# Output of the go coverage tool
+*.out
+# Go workspace file (Go 1.18+)
+go.work
+go.work.sum
+# Dependency directories (vendor mode)
+vendor/
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+# OS files
+.DS_Store
+Thumbs.db
+# Debug files
+__debug_bin
