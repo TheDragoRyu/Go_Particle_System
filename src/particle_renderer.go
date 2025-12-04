@@ -15,11 +15,11 @@ type ParticleRenderer struct {
 	density        [][]int // Reusable density grid
 }
 
-const HIGH_PARTICLES string = "@"
-const MEDIUM_HIGH_PARTICLES string = "#"
-const MEDIUM_PARTICLES string = "+"
-const LOW_PARTICLES string = "*"
-const SPARSE_PARTICLES string = "·"
+const HIGH_PARTICLES string = "\x1b[97m@\x1b[0m"        // bright white — hottest core
+const MEDIUM_HIGH_PARTICLES string = "\x1b[93m#\x1b[0m" // bright yellow — hot flame
+const MEDIUM_PARTICLES string = "\x1b[33m+\x1b[0m"      // yellow — mid heat
+const LOW_PARTICLES string = "\x1b[31m*\x1b[0m"         // red — cooler edge
+const SPARSE_PARTICLES string = " "                     // unused; 0 density maps to space
 
 type tickMsg time.Time
 
@@ -110,14 +110,14 @@ func (m ParticleRenderer) View() string {
 	for _, row := range m.density {
 		for _, count := range row {
 			var char string
-			if count >= 4 {
+			if count >= 8 {
 				char = HIGH_PARTICLES
-			} else if count == 3 {
+			} else if count >= 3 {
 				char = MEDIUM_HIGH_PARTICLES
 			} else if count == 2 {
-				char = LOW_PARTICLES
+				char = MEDIUM_PARTICLES
 			} else if count == 1 {
-				char = SPARSE_PARTICLES
+				char = LOW_PARTICLES
 			} else {
 				char = " "
 			}
